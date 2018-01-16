@@ -7,7 +7,7 @@ This process applications contains a process to work on an external task.
 
 ## How does it work?
 
-The Java delegate class fetches a maximum of 5 task in each cycle and works on them in a loop. 
+The [Java delegate class](src/main/java/com/camunda/consulting/external_task_worker_scheduled_by_process/ExternalWorkerDelegate.java) fetches a maximum of 5 task in each cycle and works on them in a loop. 
 
 Here it calclates a random nomber between 0 and 5000 and sleeps for this number of milliseconds.
 

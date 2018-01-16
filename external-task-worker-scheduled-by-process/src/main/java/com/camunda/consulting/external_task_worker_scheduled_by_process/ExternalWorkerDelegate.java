@@ -33,11 +33,11 @@ public class ExternalWorkerDelegate implements JavaDelegate {
       LOGGER.info("work on task {} for {} milliseconds", lockedTask.getId(), duration);
       Thread.sleep(duration);
       if (duration % 5 == 0) {
-        // task could not be completed, will be picked up later
+        // task could not be completed, release it
         LOGGER.info("unlock task {} for number {}", lockedTask.getId(), duration);
         externalTaskService.unlock(lockedTask.getId());
       } else  if (duration % 7 == 0) {
-        // task failed and will be marked with incident
+        // task failed, mark it with incident
         LOGGER.info("failed external service for task {}", lockedTask.getId());
         externalTaskService.handleFailure(lockedTask.getId(), 
             EXTERNAL_WORKER_ID, 
@@ -46,7 +46,7 @@ public class ExternalWorkerDelegate implements JavaDelegate {
             0, 
             0);
       } else {
-        // task completed sucessfully
+        // task completed successfully
         LOGGER.info("external service for task {} completed", lockedTask.getId());
         Map<String, Object> variables = Variables.createVariables().putValue("calculated value", duration);
         externalTaskService.complete(lockedTask.getId(), EXTERNAL_WORKER_ID, variables);
