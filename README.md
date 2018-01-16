@@ -5,7 +5,7 @@ The external task pattern is very useful. It can be easily used with the REST Ap
 
 Here is a collection of task workers with different implementations
 
-## [Task worker as Spring-Boot application](external-task-service-spring-boot)
+## [Task worker as Spring-Boot application](external-task-worker-spring-boot)
 Use a simple spring-boot application to implement a worker as a scheduled bean. It talks to the process engine by Rest API.
 
 ## [Task worker as a Service Task](external-task-worker-scheduled-by-process)
